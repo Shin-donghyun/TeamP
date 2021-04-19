@@ -10,10 +10,8 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private Transform playerTransform;
 
-    
-
-    [SerializeField]
-    private float timer = 0.0f;
+    //[SerializeField]
+    //private float timer = 0.0f;
 
     public const float value = 0.38f;
 
@@ -24,87 +22,87 @@ public class Enemy : MonoBehaviour
     }
     // 함수는 무조건 동사로
     // 남이봐도 알수있게
-    IEnumerator Spear_Attack()
+    //IEnumerator Spear_Attack()
+    //{
+    //    //Vector2 vec = playerTransform.position;
+    //    //float y = vec.y;
+    //    //float tile_y = 0f;
+
+    //    //for (int i = 0; i < 7; i++)
+    //    //{
+    //    //    WarningTile war = ObjectPool.TileGetObject();
+    //    //    Vector2 newVec = new Vector2(0.47f - i, (y + 0.45f) - value);
+    //    //    war.transform.position = newVec;
+    //    //    tile_y = newVec.y;
+
+    //    //    yield return null;
+    //    //    StartCoroutine(WarningDestory(war));
+    //    //}
+    //    yield return null;
+    //    StartCoroutine(Spear_Wave(tile_y));
+    //}
+
+    IEnumerator Spear_Wave()
     {
-       
-        Vector2 vec = playerTransform.position;
-        float y = vec.y;
-        float tile_y = 0f;
-
-        for (int i = 0; i < 7; i++)
-        {
-            WarningTile war = ObjectPool.TileGetObject();
-            Vector2 newVec = new Vector2(0.47f - i, (y + 0.45f) - value);
-            war.transform.position = newVec;
-            tile_y = newVec.y;
-
-            yield return null;
-            StartCoroutine(WarningDestory(war));
-        }
-        StartCoroutine(Spear_Wave(tile_y));
-    }
-
-    IEnumerator Spear_Wave(float y)
-    {
-
         SpearEnergy wave = ObjectPool.SpearGetObject();
-        
-        wave.transform.position = new Vector3(0.44f, y , 0);
+       
+
+        wave.transform.position = new Vector3(0.44f, 0f , 0);
         
         //wave = new SpearEnergy();//메모리에 새로 생성.
         yield return new WaitForSeconds(1.0f);
     }
-    IEnumerator Tail_Attack()
-    {
-        Vector3 vec = playerTransform.position;
-        float x = vec.x;
+    //IEnumerator Tail_Attack()
+    //{
+    //    Vector3 vec = playerTransform.position;
+    //    float x = vec.x;
 
 
-        /*for (int i = 0; i < 7; i++)
-        {
-            for (int j = 0; j < 3; j++)
-            {
-                WarningTile war = ObjectPool.TileGetObject();
-                Vector3 newVec = new Vector3(x +1.06f - j, -3.54f + i, 0);
+    //    /*for (int i = 0; i < 7; i++)
+    //    {
+    //        for (int j = 0; j < 3; j++)
+    //        {
+    //            WarningTile war = ObjectPool.TileGetObject();
+    //            Vector3 newVec = new Vector3(x +1.06f - j, -3.54f + i, 0);
                
 
-                war.transform.position = newVec;
+    //            war.transform.position = newVec;
 
 
-                yield return null;
-                //yield return new WaitForSeconds(2.0f);
-                StartCoroutine(WarningDestory(war));
-            }
-        }*/
-        for (int i = 0; i < 3; i++)
-        {
-            for (int j = 0; j < 7; j++)
-            {
-                WarningTile war = ObjectPool.TileGetObject();
+    //            yield return null;
+    //            //yield return new WaitForSeconds(2.0f);
+    //            StartCoroutine(WarningDestory(war));
+    //        }
+    //    }*/
+    //    for (int i = 0; i < 3; i++)
+    //    {
+    //        for (int j = 0; j < 7; j++)
+    //        {
+    //            WarningTile war = ObjectPool.TileGetObject();
 
-                if (vec.x <= -5)
-                {
+    //            if (vec.x <= -5)
+    //            {
                     
-                    Vector3 newVec = new Vector3(x + 1.06f - i + 1 , -3.54f + j, 0);
-                    war.transform.position = newVec;
-                }
-                else if(vec.x >= 0.35f)
-                {
-                    Vector3 newVec = new Vector3(x + 1.06f - i - 1, -3.54f + j, 0);
-                    war.transform.position = newVec;
-                }
-                else
-                {
-                    Vector3 newVec = new Vector3(x + 1.06f - i, -3.54f + j, 0);
-                    war.transform.position = newVec;
-                }
-                yield return null;
-                //yield return new WaitForSeconds(2.0f);
-                StartCoroutine(WarningDestory(war));
-            }
-        }
-        StartCoroutine(Tail_Wave());
-    }
+    //                Vector3 newVec = new Vector3(x + 1.06f - i + 1 , -3.54f + j, 0);
+    //                war.transform.position = newVec;
+    //            }
+    //            else if(vec.x >= 0.35f)
+    //            {
+    //                Vector3 newVec = new Vector3(x + 1.06f - i - 1, -3.54f + j, 0);
+    //                war.transform.position = newVec;
+    //            }
+    //            else
+    //            {
+    //                Vector3 newVec = new Vector3(x + 1.06f - i, -3.54f + j, 0);
+    //                war.transform.position = newVec;
+    //            }
+    //            yield return null;
+    //            //yield return new WaitForSeconds(2.0f);
+    //            StartCoroutine(WarningDestory(war));
+    //        }
+    //    }
+    //    StartCoroutine(Tail_Wave());
+    //}
 
     IEnumerator Tail_Wave()
     {
@@ -134,7 +132,6 @@ public class Enemy : MonoBehaviour
         Tail_Effect effect = ObjectPool.EffectGetObject();
         if (vec.x <= -5)
         {
-
             effect.transform.position = new Vector3(x + 1.1f, -0.56f, 0);
         }
         else if (vec.x >= 0.35f)
@@ -149,22 +146,22 @@ public class Enemy : MonoBehaviour
         yield return new WaitForSeconds(5.0f);
     }
 
-    IEnumerator Finger1_Attack()
-    {
-        for (int i = 0; i < 7; i++)
-        {
-            for (int j = 0; j < 3; j++)
-            {
-                WarningTile war = ObjectPool.TileGetObject();
-                Vector2 newVec = new Vector2(0.47f - i, (0.9f - j) - value);
-                war.transform.position = newVec;
+    //IEnumerator Finger1_Attack()
+    //{
+    //    for (int i = 0; i < 7; i++)
+    //    {
+    //        for (int j = 0; j < 3; j++)
+    //        {
+    //            WarningTile war = ObjectPool.TileGetObject();
+    //            Vector2 newVec = new Vector2(0.47f - i, (0.9f - j) - value);
+    //            war.transform.position = newVec;
 
-                yield return null;
-                StartCoroutine(WarningDestory(war));
-            }
-        }
-        StartCoroutine(Finger1_Wave());
-    }
+    //            yield return null;
+    //            StartCoroutine(WarningDestory(war));
+    //        }
+    //    }
+    //    StartCoroutine(Finger1_Wave());
+    //}
 
     IEnumerator Finger1_Wave()
     {
@@ -183,22 +180,22 @@ public class Enemy : MonoBehaviour
         yield return new WaitForSeconds(1.0f);
     }
 
-    IEnumerator Finger2_Attack()
-    {
-        for (int i = 0; i < 7; i++)
-        {
-            for (int j = 0; j < 3; j++)
-            {
-                WarningTile war = ObjectPool.TileGetObject();
-                Vector2 newVec = new Vector2((-3.55f + 0.05f) + j, (2.36f + 0.15f) - i);
-                war.transform.position = newVec;
+    //IEnumerator Finger2_Attack()
+    //{
+    //    for (int i = 0; i < 7; i++)
+    //    {
+    //        for (int j = 0; j < 3; j++)
+    //        {
+    //            WarningTile war = ObjectPool.TileGetObject();
+    //            Vector2 newVec = new Vector2((-3.55f + 0.05f) + j, (2.36f + 0.15f) - i);
+    //            war.transform.position = newVec;
 
-                yield return null;
-                StartCoroutine(WarningDestory(war));
-            }
-        }
-        StartCoroutine(Finger2_Wave());
-    }
+    //            yield return null;
+    //            StartCoroutine(WarningDestory(war));
+    //        }
+    //    }
+    //    StartCoroutine(Finger2_Wave());
+    //}
 
     IEnumerator Finger2_Wave()
     {
@@ -217,31 +214,30 @@ public class Enemy : MonoBehaviour
         yield return new WaitForSeconds(1.0f);
     }
 
+    //경고타일임 & 필요 없는거 같아 제외
+    //IEnumerator WarningDestory(WarningTile war)
+    //{
+    //    SpriteRenderer spr = war.GetComponent<SpriteRenderer>();
+    //    Color temColor = spr.color;
+    //    float a = spr.color.a;
 
-    IEnumerator WarningDestory(WarningTile war)
-    {
-        SpriteRenderer spr = war.GetComponent<SpriteRenderer>();
-        Color temColor = spr.color;
-        float a = spr.color.a;
+    //    yield return null;
 
-        yield return null;
-
-        while (a > 0.01f)
-        {
-            spr.color = new Color(temColor.r, temColor.g, temColor.b, a);
-            yield return null;
-            a -= Time.deltaTime;
-
-        }
-        //반복분이끝나고
-        //알파값이 완전 작아져서 완전히 투명해져가는 상태
+    //    while (a > 0.01f)
+    //    {
+    //        spr.color = new Color(temColor.r, temColor.g, temColor.b, a);
+    //        yield return null;
+    //        a -= Time.deltaTime;
+    //    }
+    //    //반복분이끝나고
+    //    //알파값이 완전 작아져서 완전히 투명해져가는 상태
 
 
-        // 회수를 하는 함수죠
-        // Warningtile 을 회수 하는 함수에요
-        ObjectPool.EnQueueObject(war);
+    //    // 회수를 하는 함수죠
+    //    // Warningtile 을 회수 하는 함수에요
+    //    ObjectPool.EnQueueObject(war);
 
-    }
+    //}
 
     IEnumerator Tail_Effect_Destory(Tail_Effect war)
     {
@@ -314,7 +310,7 @@ public class Enemy : MonoBehaviour
                 break;
             case 1:
                 //창 공격 모션
-                StartCoroutine(Spear_Mot());
+                StartCoroutine(SpearWield_Mot());
                 break;
             case 2:
                 //꼬리 공격 모션
@@ -324,20 +320,20 @@ public class Enemy : MonoBehaviour
     }
     IEnumerator Finger_Mot()
     {
-        anim.SetTrigger("doFingerAttack");
-        yield return new WaitForSeconds(1.5f);
+        anim.SetTrigger("doFinger");
+        yield return new WaitForSeconds(1.2f);
         StartCoroutine(Think());
     }
-    IEnumerator Spear_Mot()
+    IEnumerator SpearWield_Mot()
     {
-        anim.SetTrigger("doSpearAttack");
-        yield return new WaitForSeconds(1.5f);
+        anim.SetTrigger("doSpear_Wield");
+        yield return new WaitForSeconds(1.2f);
         StartCoroutine(Think());
     }
     IEnumerator Tail_Mot()
     {
-        anim.SetTrigger("doTailAttack");
-        yield return new WaitForSeconds(1.5f);
+        anim.SetTrigger("doTail");
+        yield return new WaitForSeconds(1.2f);
         StartCoroutine(Think());
     }
 }

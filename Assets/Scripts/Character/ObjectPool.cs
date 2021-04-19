@@ -8,8 +8,8 @@ public class ObjectPool : MonoBehaviour
 
     [Header("오브젝트")]    
 
-    [SerializeField]
-    private GameObject warningTilefab;
+    //[SerializeField]
+    //private GameObject warningTilefab;
     [SerializeField]
     private GameObject spear_energyPrefab;
     [SerializeField]
@@ -27,7 +27,7 @@ public class ObjectPool : MonoBehaviour
 
 
 
-    private Queue<WarningTile> Tile_Pooling_Object_Queue = new Queue<WarningTile>();
+    //private Queue<WarningTile> Tile_Pooling_Object_Queue = new Queue<WarningTile>();
 
     private Queue<SpearEnergy> Spear_Pooling_Object_Queue = new Queue<SpearEnergy>();
 
@@ -58,12 +58,12 @@ public class ObjectPool : MonoBehaviour
         
     }
 
-    private WarningTile TileNewObject()
-    {
-        var newObj = Instantiate(warningTilefab, transform).GetComponent<WarningTile>();
-        newObj.gameObject.SetActive(false);
-        return newObj;
-    }
+    //private WarningTile TileNewObject()
+    //{
+    //    var newObj = Instantiate(warningTilefab, transform).GetComponent<WarningTile>();
+    //    newObj.gameObject.SetActive(false);
+    //    return newObj;
+    //}
 
     private SpearEnergy SpearNewObject()
     {
@@ -125,24 +125,24 @@ public class ObjectPool : MonoBehaviour
     }
 
 
-    public static WarningTile TileGetObject()
-    {
-        WarningTile tile;
-        if(Instance.Tile_Pooling_Object_Queue.Count > 0)//빌려줄 오브젝트 있을때
-        {
-            tile = Instance.Tile_Pooling_Object_Queue.Dequeue();//Queue에서 꺼내다(?)
+    //public static WarningTile TileGetObject()
+    //{
+    //    WarningTile tile;
+    //    if(Instance.Tile_Pooling_Object_Queue.Count > 0)//빌려줄 오브젝트 있을때
+    //    {
+    //        tile = Instance.Tile_Pooling_Object_Queue.Dequeue();//Queue에서 꺼내다(?)
             
-        }
-        else//빌려줄 오브젝트 없을때
-        {
-            tile = Instance.TileNewObject();
+    //    }
+    //    else//빌려줄 오브젝트 없을때
+    //    {
+    //        tile = Instance.TileNewObject();
 
-        }
-        tile.transform.SetParent(null);
-        tile.gameObject.SetActive(true);
+    //    }
+    //    tile.transform.SetParent(null);
+    //    tile.gameObject.SetActive(true);
 
-        return tile;
-    }
+    //    return tile;
+    //}
 
     public static SpearEnergy SpearGetObject()
     {
@@ -262,7 +262,6 @@ public class ObjectPool : MonoBehaviour
         else//빌려줄 오브젝트 없을때
         {
             effect = Instance.f2_EffectNewObject();
-
         }
         effect.transform.SetParent(null);
         effect.gameObject.SetActive(true);
@@ -272,16 +271,16 @@ public class ObjectPool : MonoBehaviour
 
 
 
-    public static void EnQueueObject(WarningTile tile)
-    {
-        tile.gameObject.SetActive(false);
+    //public static void EnQueueObject(WarningTile tile)
+    //{
+    //    tile.gameObject.SetActive(false);
 
-        var spr = tile.GetComponent<SpriteRenderer>();
-        spr.color = Color.white;
-        tile.transform.SetParent(Instance.transform);
-        Instance.Tile_Pooling_Object_Queue.Enqueue(tile);//Queue에서
-        //나는 Enemy 를 넣는다고 생각했었다.
-    }
+    //    var spr = tile.GetComponent<SpriteRenderer>();
+    //    spr.color = Color.white;
+    //    tile.transform.SetParent(Instance.transform);
+    //    Instance.Tile_Pooling_Object_Queue.Enqueue(tile);//Queue에서
+    //    //나는 Enemy 를 넣는다고 생각했었다.
+    //}
 
     public static void EnQueueObject(SpearEnergy spear)
     {
@@ -290,7 +289,7 @@ public class ObjectPool : MonoBehaviour
         var spr = spear.GetComponent<SpriteRenderer>();
         spr.color = Color.white;
         spear.transform.SetParent(Instance.transform);
-        Instance.Spear_Pooling_Object_Queue.Enqueue(spear);//Queue에서
+        Instance.Spear_Pooling_Object_Queue.Enqueue(spear);
     }
 
     public static void EnQueueObject(Tail_Wave tail)
@@ -300,7 +299,7 @@ public class ObjectPool : MonoBehaviour
         var spr = tail.GetComponent<SpriteRenderer>();
         spr.color = Color.white;
         tail.transform.SetParent(Instance.transform);
-        Instance.Tail_Pooling_Object_Queue.Enqueue(tail);//Queue에서
+        Instance.Tail_Pooling_Object_Queue.Enqueue(tail);
     }
 
     public static void EnQueueObject(Finger_Wave1 finger1)
@@ -310,7 +309,7 @@ public class ObjectPool : MonoBehaviour
         var spr = finger1.GetComponent<SpriteRenderer>();
         spr.color = Color.white;
         finger1.transform.SetParent(Instance.transform);
-        Instance.Finger1_Pooling_Object_Queue.Enqueue(finger1);//Queue에서
+        Instance.Finger1_Pooling_Object_Queue.Enqueue(finger1);
     }
 
     public static void EnQueueObject(Finger_Wave2 finger2)
@@ -320,7 +319,7 @@ public class ObjectPool : MonoBehaviour
         var spr = finger2.GetComponent<SpriteRenderer>();
         spr.color = Color.white;
         finger2.transform.SetParent(Instance.transform);
-        Instance.Finger2_Pooling_Object_Queue.Enqueue(finger2);//Queue에서
+        Instance.Finger2_Pooling_Object_Queue.Enqueue(finger2);
     }
 
     public static void EnQueueObject(Tail_Effect effect)
@@ -330,7 +329,7 @@ public class ObjectPool : MonoBehaviour
         var spr = effect.GetComponent<SpriteRenderer>();
         spr.color = Color.white;
         effect.transform.SetParent(Instance.transform);
-        Instance.effect_Pooling_Object_Queue.Enqueue(effect);//Queue에서
+        Instance.effect_Pooling_Object_Queue.Enqueue(effect);
     }
 
     public static void EnQueueObject(Finger1_Effect effect)
@@ -340,7 +339,7 @@ public class ObjectPool : MonoBehaviour
         var spr = effect.GetComponent<SpriteRenderer>();
         spr.color = Color.white;
         effect.transform.SetParent(Instance.transform);
-        Instance.f1Effect_Pooling_Object_Queue.Enqueue(effect);//Queue에서
+        Instance.f1Effect_Pooling_Object_Queue.Enqueue(effect);
     }
     public static void EnQueueObject(Finger2_Effect effect)
     {
@@ -349,6 +348,6 @@ public class ObjectPool : MonoBehaviour
         var spr = effect.GetComponent<SpriteRenderer>();
         spr.color = Color.white;
         effect.transform.SetParent(Instance.transform);
-        Instance.f2Effect_Pooling_Object_Queue.Enqueue(effect);//Queue에서
+        Instance.f2Effect_Pooling_Object_Queue.Enqueue(effect);
     }
 }

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class WarningTile : MonoBehaviour
 {
- 
     [SerializeField]
     private GameObject warning;
 }
