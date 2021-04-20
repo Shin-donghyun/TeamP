@@ -549,8 +549,8 @@ BoxCollider2D:
   m_Offset: {x: 0.09690499, y: 1.2196194}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.65, y: 0.3}
-    oldSize: {x: 9.266666, y: 6.9333334}
+    pivot: {x: 0.3, y: 0}
+    oldSize: {x: 2.6, y: 2.8444445}
     newSize: {x: 1.17, y: 1.28}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -625,7 +625,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 21
+  orthographic size: 15
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -649,7 +649,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1365455673}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -100}
+  m_LocalPosition: {x: 0.1, y: 2.9, z: -100}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1721,16 +1721,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f10c1a77146d3f54bb61c76bf18bc68a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  warningTilefab: {fileID: 0}
   spear_energyPrefab: {fileID: 5496136640501862964, guid: 71ec13c6e6b718649a6cc4c87c479a48,
     type: 3}
-  tail_energyPrefab: {fileID: 0}
-  finger1_energyPrefab: {fileID: 0}
-  finger2_energyPrefab: {fileID: 0}
+  tail_energyPrefab: {fileID: 7067851237957341260, guid: 94c75170153b1a547ba5257f7f595bb8,
+    type: 3}
+  finger1_energyPrefab: {fileID: 7602563734132470715, guid: f918501ecd716724fb8cf6b40bd07373,
+    type: 3}
+  finger2_energyPrefab: {fileID: 5343799982477402440, guid: bfeb097c7c0a4c249b1a5c73e0238a15,
+    type: 3}
   tail_effect: {fileID: 8917111047435832349, guid: 1707e9d2778e8734cba6ea4c657143b7,
     type: 3}
-  finger1_effect: {fileID: 0}
-  finger2_effect: {fileID: 0}
+  finger1_effect: {fileID: 4756978070004250433, guid: 6d9b7d1582d9d6642b15fa286cea3a38,
+    type: 3}
+  finger2_effect: {fileID: 6497237163601434589, guid: 067d9968fa3345a44b1e552bfb5583a7,
+    type: 3}
 --- !u!1001 &4151160881249315238
 PrefabInstance:
   m_ObjectHideFlags: 0
