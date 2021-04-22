@@ -12,7 +12,7 @@ public class Player_Move : MonoBehaviour
     Rigidbody2D rigid;
     SpriteRenderer sprite;
     Animator anim;
-    
+    HP_Enemyslider enemyHp;
     void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -35,6 +35,10 @@ public class Player_Move : MonoBehaviour
                 foreach  (Collider2D collider in collider2Ds)
                 {
                     Debug.Log(collider.tag);
+                    if (collider.gameObject.tag == "Enemy")
+                    {
+                        Debug.Log("10");
+                    }
                 }
 
                 anim.SetTrigger("doAttack");

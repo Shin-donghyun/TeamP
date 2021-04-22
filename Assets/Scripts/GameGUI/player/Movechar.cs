@@ -12,8 +12,10 @@ public class Movechar : MonoBehaviour
     Animator anim;
 
     Vector3 movement;
+    //2단점프
     bool isJumping = false;
-
+    int JumpCount = 0;
+   
     private float curTime;
     public float attack_coolTime = 0.5f;
     public Transform pos;
@@ -47,7 +49,11 @@ public class Movechar : MonoBehaviour
         }
         if (Input.GetKeyDown("c"))
         {
-            isJumping = true;
+            if (JumpCount < 2)
+            {
+                isJumping = true;
+                JumpCount++;
+            }
         }
         if (Input.GetButton("Horizontal"))
         {
@@ -55,10 +61,15 @@ public class Movechar : MonoBehaviour
         }
 
     }
+    private void OnCollisionEnter2D(Collision2D col)
+    {
+        JumpCount = 0;
+    }
     void FixedUpdate()
     {
         Move();
         Jump();
+       
     }
     void Move()
     {
@@ -95,4 +106,5 @@ public class Movechar : MonoBehaviour
         isJumping = false;
 
     }
+    
 }
