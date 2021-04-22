@@ -1,17 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Movechar : MonoBehaviour
 {
     public float movePower = 1.0f;
     public float jumpPower = 1.0f;
+    public GameObject Tutorialimg;
+    bool isPause;
 
     Rigidbody2D rigid;
     SpriteRenderer sprite;
     Animator anim;
 
     Vector3 movement;
+    
     //2단점프
     bool isJumping = false;
     int JumpCount = 0;
@@ -25,6 +29,11 @@ public class Movechar : MonoBehaviour
         rigid = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
+        
+    }
+    void Start()
+    {
+        Time.timeScale = 0;
     }
     void Update()
     {
@@ -106,5 +115,13 @@ public class Movechar : MonoBehaviour
         isJumping = false;
 
     }
-    
+    void Dash()
+    {
+
+    }
+    public void TutorialBtn()
+    {
+        Tutorialimg.SetActive(false);
+        Time.timeScale = 1;
+    }
 }

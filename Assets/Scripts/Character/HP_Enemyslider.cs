@@ -7,21 +7,32 @@ public class HP_Enemyslider : MonoBehaviour
     
     public Slider Enemy_HealthBar;
 
-    private int maxHP = 50;
-    private int curHP = 50;
+    private float maxHP = 50;
+    private float curHP = 50;
 
+    public GameObject closeimg;
+    public GameObject cav;
+
+    private int imgCount = 0;
     void Start()
     {
-        Enemy_HealthBar.value = (int)curHP / (int)maxHP;
+        Enemy_HealthBar.value = (float)curHP / (float)maxHP;
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.V))
         {
             Hp_dmg(10);
         }
         
         HandleHp();
+        
+        if (curHP == 0)
+        {
+            Time.timeScale = 0;
+            closeimg.SetActive(true);
+            cav.SetActive(false);
+        }
     }
     public void Hp_dmg(int dmg)
     {
@@ -29,6 +40,6 @@ public class HP_Enemyslider : MonoBehaviour
     }
     public void HandleHp()
     {
-        Enemy_HealthBar.value = (int)curHP / (int)maxHP;
+        Enemy_HealthBar.value = (float)curHP / (float)maxHP;
     }
 }
