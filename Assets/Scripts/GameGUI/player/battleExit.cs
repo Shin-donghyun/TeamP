@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class battleExit : MonoBehaviour
 {
     public GameObject Enmeyimg;
@@ -16,6 +16,10 @@ public class battleExit : MonoBehaviour
             if (count == 10)
             {
                 Enmeyimg.SetActive(true);
+            }
+            else if (count > 10)
+            {
+                SceneManager.LoadScene("MainMenu");
             }
         }
     }
