@@ -1724,7 +1724,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cd5f9a1a69625a4f968412c58ade9e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movePower: 16
+  movePower: 15
   jumpPower: 15
   Tutorialimg: {fileID: 1153183309}
   attack_coolTime: 0.5
