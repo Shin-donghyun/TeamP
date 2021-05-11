@@ -10,6 +10,8 @@ public class Movechar : MonoBehaviour
     public GameObject Tutorialimg;
     bool isPause;
 
+    public int damage = 10;
+    
     Rigidbody2D rigid;
     SpriteRenderer sprite;
     Animator anim;
