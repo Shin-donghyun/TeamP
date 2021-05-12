@@ -1,12 +1,43 @@
 ﻿using System.Collections;
 using System.Threading;
 using UnityEngine;
-
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
-    Animator anim;
+    //체력
+    [SerializeField]
+    private Slider Hp_slider;
 
+    private int health = 100;
+    private int CurHp = 100;
+
+    public GameObject BlackScreen;
+    public GameObject tutorialout;
+
+    void Start()
+    {
+        Hp_slider.maxValue = health;
+    }
+    private void HandleHp()
+    {
+        Hp_slider.value = health;
+        //Hp_slider.value = Mathf.Lerp(Hp_slider.value, (float)health, Time.deltaTime * 10);
+    }
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+        HandleHp();
+
+        if (health <= 0) {
+
+            Time.timeScale = 0;
+            BlackScreen.SetActive(true);
+            tutorialout.SetActive(false);
+        } 
+    }
+    //
+    Animator anim;
     [SerializeField]
     private Transform playerTransform;
 
@@ -14,7 +45,7 @@ public class Enemy : MonoBehaviour
     //private float timer = 0.0f;
 
     public const float value = 0.38f;
-
+    
     void Awake()
     {
         anim = GetComponent<Animator>();

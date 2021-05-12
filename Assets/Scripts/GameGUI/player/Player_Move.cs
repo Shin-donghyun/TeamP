@@ -31,15 +31,7 @@ public class Player_Move : MonoBehaviour
             //Attack
             if(Input.GetKey(KeyCode.Z))
             {
-                Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(pos.position,boxSize, 0);
-                foreach  (Collider2D collider in collider2Ds)
-                {
-                    Debug.Log(collider.tag);
-                    if (collider.gameObject.tag == "Enemy")
-                    {
-                        Debug.Log("10");
-                    }
-                }
+               
 
                 anim.SetTrigger("doAttack");
                 curTime = attack_coolTime;

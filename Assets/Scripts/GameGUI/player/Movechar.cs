@@ -4,18 +4,16 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Movechar : MonoBehaviour
-{
+{    
     public float movePower = 1.0f;
     public float jumpPower = 1.0f;
     public GameObject Tutorialimg;
     bool isPause;
-
-    public int damage = 10;
-    
+   
     Rigidbody2D rigid;
     SpriteRenderer sprite;
     Animator anim;
-
+    HP_Enemyslider hphand;
     Vector3 movement;
     
     //2단점프
@@ -24,6 +22,7 @@ public class Movechar : MonoBehaviour
    
     private float curTime;
     public float attack_coolTime = 0.5f;
+    
     public Transform pos;
     public Vector2 boxSize;
     void Awake()
@@ -35,6 +34,7 @@ public class Movechar : MonoBehaviour
     }
     void Start()
     {
+        HP_Enemyslider hphand;
         Time.timeScale = 0;
     }
     void Update()
@@ -47,7 +47,11 @@ public class Movechar : MonoBehaviour
                 Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(pos.position, boxSize, 0);
                 foreach (Collider2D collider in collider2Ds)
                 {
-                    Debug.Log(collider.tag);
+                    if (collider.tag == "Enemy")
+                    {
+                        Debug.Log("맞음");
+                        collider.GetComponent<Enemy>().TakeDamage(50);
+                    }
                 }
 
                 anim.SetTrigger("doAttack");
@@ -117,10 +121,12 @@ public class Movechar : MonoBehaviour
         isJumping = false;
 
     }
-    void Dash()
+    private void OnDrawGizmos()
     {
-
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireCube(pos.position, boxSize);
     }
+
     public void TutorialBtn()
     {
         Tutorialimg.SetActive(false);
