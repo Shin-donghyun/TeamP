@@ -26,6 +26,8 @@ public class Boss : MonoBehaviour
 			transform.Rotate(0f, 180f, 0f);
 			isFlipped = true;
 		}
+		Debug.Log("테스트");
 	}
+
 }
 //이도현 시험 중
