@@ -772,7 +772,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1153183310
 RectTransform:
   m_ObjectHideFlags: 0
@@ -899,7 +899,6 @@ GameObject:
   - component: {fileID: 1157496866}
   - component: {fileID: 1157496864}
   - component: {fileID: 1157496867}
-  - component: {fileID: 1157496868}
   - component: {fileID: 1157496869}
   m_Layer: 0
   m_Name: Enemy
@@ -1034,6 +1033,8 @@ MonoBehaviour:
   Hp_slider: {fileID: 2074658377}
   BlackScreen: {fileID: 2013292212}
   tutorialout: {fileID: 1153183309}
+  player: {fileID: 1724114711}
+  isFlipped: 0
   playerTransform: {fileID: 1724114711}
 --- !u!50 &1157496867
 Rigidbody2D:
@@ -1056,20 +1057,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 5
---- !u!114 &1157496868
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1157496861}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb3caede12fb8814692dafc74555986a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 1724114711}
-  isFlipped: 0
 --- !u!114 &1157496869
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1257,7 +1244,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1365455673}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.7, y: -0.95, z: -1}
+  m_LocalPosition: {x: 1.2, y: -0.95, z: -1}
   m_LocalScale: {x: 1.2000002, y: 1.2000002, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

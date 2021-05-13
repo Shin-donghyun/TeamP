@@ -34,7 +34,6 @@ public class Movechar : MonoBehaviour
     }
     void Start()
     {
-        HP_Enemyslider hphand;
         Time.timeScale = 0;
     }
     void Update()
@@ -50,7 +49,7 @@ public class Movechar : MonoBehaviour
                     if (collider.tag == "Enemy")
                     {
                         Debug.Log("맞음");
-                        collider.GetComponent<Enemy>().TakeDamage(50);
+                        collider.GetComponent<Enemy>().TakeDamage(10);
                     }
                 }
 
@@ -129,6 +128,11 @@ public class Movechar : MonoBehaviour
 
     public void TutorialBtn()
     {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Tutorialimg.SetActive(false);
+            Time.timeScale = 1;
+        }
         Tutorialimg.SetActive(false);
         Time.timeScale = 1;
     }

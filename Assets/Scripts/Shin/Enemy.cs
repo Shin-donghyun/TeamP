@@ -28,13 +28,37 @@ public class Enemy : MonoBehaviour
     {
         health -= damage;
         HandleHp();
-
+        anim.SetTrigger("HitMotion");
         if (health <= 0) {
 
             Time.timeScale = 0;
             BlackScreen.SetActive(true);
             tutorialout.SetActive(false);
         } 
+    }
+    //
+    //플레이어 따라다니기
+    public Transform player;
+
+    public bool isFlipped = false;
+
+    public void LookAtPlayer()
+    {
+        Vector3 flipped = transform.localScale;
+        flipped.z *= -1f;
+
+        if (transform.position.x > player.position.x && isFlipped)
+        {
+            transform.localScale = flipped;
+            transform.Rotate(0f, 180f, 0f);
+            isFlipped = false;
+        }
+        else if (transform.position.x < player.position.x && !isFlipped)
+        {
+            transform.localScale = flipped;
+            transform.Rotate(0f, 180f, 0f);
+            isFlipped = true;
+        }
     }
     //
     Animator anim;
@@ -51,27 +75,7 @@ public class Enemy : MonoBehaviour
         anim = GetComponent<Animator>();
         StartCoroutine(Think());
     }
-    // 함수는 무조건 동사로
-    // 남이봐도 알수있게
-    //IEnumerator Spear_Attack()
-    //{
-    //    //Vector2 vec = playerTransform.position;
-    //    //float y = vec.y;
-    //    //float tile_y = 0f;
-
-    //    //for (int i = 0; i < 7; i++)
-    //    //{
-    //    //    WarningTile war = ObjectPool.TileGetObject();
-    //    //    Vector2 newVec = new Vector2(0.47f - i, (y + 0.45f) - value);
-    //    //    war.transform.position = newVec;
-    //    //    tile_y = newVec.y;
-
-    //    //    yield return null;
-    //    //    StartCoroutine(WarningDestory(war));
-    //    //}
-    //    yield return null;
-    //    StartCoroutine(Spear_Wave(tile_y));
-    //}
+    
 
     IEnumerator Spear_Wave()
     {
@@ -83,57 +87,7 @@ public class Enemy : MonoBehaviour
         //wave = new SpearEnergy();//메모리에 새로 생성.
         yield return new WaitForSeconds(1.0f);
     }
-    //IEnumerator Tail_Attack()
-    //{
-    //    Vector3 vec = playerTransform.position;
-    //    float x = vec.x;
-
-
-    //    /*for (int i = 0; i < 7; i++)
-    //    {
-    //        for (int j = 0; j < 3; j++)
-    //        {
-    //            WarningTile war = ObjectPool.TileGetObject();
-    //            Vector3 newVec = new Vector3(x +1.06f - j, -3.54f + i, 0);
-               
-
-    //            war.transform.position = newVec;
-
-
-    //            yield return null;
-    //            //yield return new WaitForSeconds(2.0f);
-    //            StartCoroutine(WarningDestory(war));
-    //        }
-    //    }*/
-    //    for (int i = 0; i < 3; i++)
-    //    {
-    //        for (int j = 0; j < 7; j++)
-    //        {
-    //            WarningTile war = ObjectPool.TileGetObject();
-
-    //            if (vec.x <= -5)
-    //            {
-                    
-    //                Vector3 newVec = new Vector3(x + 1.06f - i + 1 , -3.54f + j, 0);
-    //                war.transform.position = newVec;
-    //            }
-    //            else if(vec.x >= 0.35f)
-    //            {
-    //                Vector3 newVec = new Vector3(x + 1.06f - i - 1, -3.54f + j, 0);
-    //                war.transform.position = newVec;
-    //            }
-    //            else
-    //            {
-    //                Vector3 newVec = new Vector3(x + 1.06f - i, -3.54f + j, 0);
-    //                war.transform.position = newVec;
-    //            }
-    //            yield return null;
-    //            //yield return new WaitForSeconds(2.0f);
-    //            StartCoroutine(WarningDestory(war));
-    //        }
-    //    }
-    //    StartCoroutine(Tail_Wave());
-    //}
+    
 
     IEnumerator Tail_Wave()
     {
@@ -177,23 +131,6 @@ public class Enemy : MonoBehaviour
         yield return new WaitForSeconds(5.0f);
     }
 
-    //IEnumerator Finger1_Attack()
-    //{
-    //    for (int i = 0; i < 7; i++)
-    //    {
-    //        for (int j = 0; j < 3; j++)
-    //        {
-    //            WarningTile war = ObjectPool.TileGetObject();
-    //            Vector2 newVec = new Vector2(0.47f - i, (0.9f - j) - value);
-    //            war.transform.position = newVec;
-
-    //            yield return null;
-    //            StartCoroutine(WarningDestory(war));
-    //        }
-    //    }
-    //    StartCoroutine(Finger1_Wave());
-    //}
-
     IEnumerator Finger1_Wave()
     {
         Finger_Wave1 wave = ObjectPool.Finger1GetObject();
@@ -211,23 +148,6 @@ public class Enemy : MonoBehaviour
         yield return new WaitForSeconds(1.0f);
     }
 
-    //IEnumerator Finger2_Attack()
-    //{
-    //    for (int i = 0; i < 7; i++)
-    //    {
-    //        for (int j = 0; j < 3; j++)
-    //        {
-    //            WarningTile war = ObjectPool.TileGetObject();
-    //            Vector2 newVec = new Vector2((-3.55f + 0.05f) + j, (2.36f + 0.15f) - i);
-    //            war.transform.position = newVec;
-
-    //            yield return null;
-    //            StartCoroutine(WarningDestory(war));
-    //        }
-    //    }
-    //    StartCoroutine(Finger2_Wave());
-    //}
-
     IEnumerator Finger2_Wave()
     {
         Finger_Wave2 wave = ObjectPool.Finger2GetObject();
@@ -244,31 +164,6 @@ public class Enemy : MonoBehaviour
         StartCoroutine(Effect_Destory(effect));
         yield return new WaitForSeconds(1.0f);
     }
-
-    //경고타일임 & 필요 없는거 같아 제외
-    //IEnumerator WarningDestory(WarningTile war)
-    //{
-    //    SpriteRenderer spr = war.GetComponent<SpriteRenderer>();
-    //    Color temColor = spr.color;
-    //    float a = spr.color.a;
-
-    //    yield return null;
-
-    //    while (a > 0.01f)
-    //    {
-    //        spr.color = new Color(temColor.r, temColor.g, temColor.b, a);
-    //        yield return null;
-    //        a -= Time.deltaTime;
-    //    }
-    //    //반복분이끝나고
-    //    //알파값이 완전 작아져서 완전히 투명해져가는 상태
-
-
-    //    // 회수를 하는 함수죠
-    //    // Warningtile 을 회수 하는 함수에요
-    //    ObjectPool.EnQueueObject(war);
-
-    //}
 
     IEnumerator Tail_Effect_Destory(Tail_Effect war)
     {
