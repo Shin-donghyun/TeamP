@@ -900,6 +900,7 @@ GameObject:
   - component: {fileID: 1157496864}
   - component: {fileID: 1157496867}
   - component: {fileID: 1157496869}
+  - component: {fileID: 1157496868}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -966,8 +967,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1157496861}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15.42, y: -7.59, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 0}
+  m_LocalPosition: {x: 15.47, y: -7.706, z: 0}
+  m_LocalScale: {x: 1.5, y: 1.5057453, z: 0}
   m_Children:
   - {fileID: 2140493214}
   m_Father: {fileID: 0}
@@ -1005,7 +1006,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.1271658, y: 1.1981014}
+  m_Offset: {x: 0.19887269, y: 1.2196136}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.3, y: 0}
@@ -1016,7 +1017,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.03371, y: 2.42228}
+  m_Size: {x: 1.2, y: 2.4}
   m_EdgeRadius: 0
 --- !u!114 &1157496866
 MonoBehaviour:
@@ -1057,6 +1058,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 5
+--- !u!114 &1157496868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1157496861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb3caede12fb8814692dafc74555986a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1724114711}
+  isFlipped: 0
 --- !u!114 &1157496869
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1220,7 +1235,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 7.321916
+  orthographic size: 5.353091
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1244,7 +1259,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1365455673}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.2, y: -0.95, z: -1}
+  m_LocalPosition: {x: 1.2, y: -2.9, z: -1}
   m_LocalScale: {x: 1.2000002, y: 1.2000002, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1566,8 +1581,8 @@ GameObject:
   - component: {fileID: 1724114713}
   - component: {fileID: 1724114715}
   m_Layer: 9
-  m_Name: _Player
-  m_TagString: Untagged
+  m_Name: Player
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
