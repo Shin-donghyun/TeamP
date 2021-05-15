@@ -38,7 +38,7 @@ public class Enemy : MonoBehaviour
         } 
     }
     //
-    //플레이어 따라다니기
+    //플레이어 방향
     public Transform player;
     public bool isFlipped = false;
 
@@ -61,7 +61,7 @@ public class Enemy : MonoBehaviour
         }
     }
    
-    //
+    // 공격 기즈모
     Animator anim;
     [SerializeField]
     private Transform playerTransform;
@@ -81,7 +81,7 @@ public class Enemy : MonoBehaviour
     public Vector2 TailSize;
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.blue;
+        Gizmos.color = Color. red;
         Gizmos.DrawWireCube(enemy_pos.position, TailSize);
     }
     //
@@ -266,6 +266,15 @@ public class Enemy : MonoBehaviour
     }
     IEnumerator Tail_Mot()
     {
+        Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(enemy_pos.position, TailSize, 0);
+        foreach (Collider2D collider in collider2Ds)
+        {
+            if (collider.tag == "Player")
+            {
+                Debug.Log("맞음");
+                collider.GetComponent<PlayerStats>().PlayerTakeDamage(1);
+            }
+        }
         anim.SetTrigger("doTail");
         yield return new WaitForSeconds(1.2f);
         StartCoroutine(Think());

@@ -67,12 +67,9 @@ public class Movechar : MonoBehaviour
                 isJumping = true;
                 JumpCount++;
             }
+            else
+                isJumping = false;
         }
-        /*if (Input.GetButton("Horizontal"))
-        {
-            sprite.flipX = Input.GetAxisRaw("Horizontal") == -1;
-
-        }*/
         if (Input.GetAxisRaw("Horizontal") == -1)
             transform.eulerAngles = new Vector3(0, 180, 0);
         else 
