@@ -77,12 +77,20 @@ public class Enemy : MonoBehaviour
         StartCoroutine(Think());
     }
     //
-    public Transform enemy_pos;
+    public Transform enemy_Tail;
+    public Transform enemy_Spear;
+    public Transform enemy_Finger;
     public Vector2 TailSize;
+    public Vector2 SpearSize;
+    public Vector2 FingerSize;
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color. red;
-        Gizmos.DrawWireCube(enemy_pos.position, TailSize);
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(enemy_Tail.position, TailSize);
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireCube(enemy_Spear.position, SpearSize);
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireCube(enemy_Finger.position, FingerSize);
     }
     //
     IEnumerator Spear_Wave()
@@ -240,7 +248,6 @@ public class Enemy : MonoBehaviour
             case 0:
                 //손톱 공격 모션
                 StartCoroutine(Finger_Mot());
-
                 break;
             case 1:
                 //창 공격 모션
@@ -254,29 +261,47 @@ public class Enemy : MonoBehaviour
     }
     IEnumerator Finger_Mot()
     {
-        anim.SetTrigger("doFinger");
-        yield return new WaitForSeconds(1.2f);
-        StartCoroutine(Think());
-    }
-    IEnumerator SpearWield_Mot()
-    {
-        anim.SetTrigger("doSpear_Wield");
-        yield return new WaitForSeconds(1.2f);
-        StartCoroutine(Think());
-    }
-    IEnumerator Tail_Mot()
-    {
-        Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(enemy_pos.position, TailSize, 0);
+        Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(enemy_Finger.position, TailSize, 0);
         foreach (Collider2D collider in collider2Ds)
         {
             if (collider.tag == "Player")
             {
-                Debug.Log("맞음");
-                collider.GetComponent<PlayerStats>().PlayerTakeDamage(1);
+                Debug.Log("손가락맞음");
+                collider.GetComponent<PlayerStats>().PlayerTakeDamage(0.25f);
+            }
+        }
+        anim.SetTrigger("doFinger");
+        yield return new WaitForSeconds(1.3f);
+        StartCoroutine(Think());
+    }
+    IEnumerator SpearWield_Mot()
+    {
+        Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(enemy_Spear.position, TailSize, 0);
+        foreach (Collider2D collider in collider2Ds)
+        {
+            if (collider.tag == "Player")
+            {
+                Debug.Log("창휘둘기맞음");
+                collider.GetComponent<PlayerStats>().PlayerTakeDamage(0.25f);
+            }
+        }
+        anim.SetTrigger("doSpear_Wield");
+        yield return new WaitForSeconds(1.3f);
+        StartCoroutine(Think());
+    }
+    IEnumerator Tail_Mot()
+    {
+        Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(enemy_Tail.position, TailSize, 0);
+        foreach (Collider2D collider in collider2Ds)
+        {
+            if (collider.tag == "Player")
+            {
+                Debug.Log("꼬리맞음");
+                collider.GetComponent<PlayerStats>().PlayerTakeDamage(0.25f);
             }
         }
         anim.SetTrigger("doTail");
-        yield return new WaitForSeconds(1.2f);
+        yield return new WaitForSeconds(1.3f);
         StartCoroutine(Think());
     }
 }

@@ -64,11 +64,16 @@ public class Movechar : MonoBehaviour
         {
             if (JumpCount < 2)
             {
-                isJumping = true;
+                if (isJumping = true)
+                {
+                    anim.SetBool("Jumping", true);
+                }
                 JumpCount++;
             }
             else
+            {
                 isJumping = false;
+            }
         }
         if (Input.GetAxisRaw("Horizontal") == -1)
             transform.eulerAngles = new Vector3(0, 180, 0);
@@ -112,12 +117,15 @@ public class Movechar : MonoBehaviour
     void Jump()
     {
         if (!isJumping)
+        {
+            anim.SetBool("Jumping", false);
             return;
+        }
 
         rigid.velocity = Vector2.zero;
         Vector2 jumpVelocity = new Vector2(0, jumpPower);
         rigid.AddForce(jumpVelocity, ForceMode2D.Impulse);
-
+        anim.SetBool("Jumping", false);
         isJumping = false;
 
     }
