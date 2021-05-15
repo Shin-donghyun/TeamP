@@ -43,8 +43,6 @@ public class Movechar : MonoBehaviour
             //Attack
             if (Input.GetKey(KeyCode.Z))
             {
-                
-
                 Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(pos.position, boxSize, 0);
                 foreach (Collider2D collider in collider2Ds)
                 {
@@ -54,7 +52,6 @@ public class Movechar : MonoBehaviour
                         collider.GetComponent<Enemy>().TakeDamage(10);
                     }
                 }
-
                 anim.SetTrigger("doAttack");
                 curTime = attack_coolTime;
             }
@@ -71,10 +68,15 @@ public class Movechar : MonoBehaviour
                 JumpCount++;
             }
         }
-        if (Input.GetButton("Horizontal"))
+        /*if (Input.GetButton("Horizontal"))
         {
             sprite.flipX = Input.GetAxisRaw("Horizontal") == -1;
-        }
+
+        }*/
+        if (Input.GetAxisRaw("Horizontal") == -1)
+            transform.eulerAngles = new Vector3(0, 180, 0);
+        else 
+            transform.eulerAngles = new Vector3(0, 0, 0);
 
     }
     private void OnCollisionEnter2D(Collision2D col)
@@ -137,5 +139,9 @@ public class Movechar : MonoBehaviour
         }
         Tutorialimg.SetActive(false);
         Time.timeScale = 1;
+    }
+    public void TakePlayerDamage(int damage)
+    {
+        Debug.Log(damage);
     }
 }

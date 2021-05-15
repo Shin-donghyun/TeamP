@@ -25,10 +25,11 @@ public class Enemy : MonoBehaviour
         //Hp_slider.value = Mathf.Lerp(Hp_slider.value, (float)health, Time.deltaTime * 10);
     }
     public void TakeDamage(int damage)
-    {
-        health -= damage;
-        HandleHp();
+    {   
         anim.SetTrigger("HitMotion");
+        health -= damage;
+        HandleHp(); 
+        
         if (health <= 0) {
 
             Time.timeScale = 0;
@@ -39,7 +40,6 @@ public class Enemy : MonoBehaviour
     //
     //플레이어 따라다니기
     public Transform player;
-
     public bool isFlipped = false;
 
     public void LookAtPlayer()
@@ -60,6 +60,7 @@ public class Enemy : MonoBehaviour
             isFlipped = true;
         }
     }
+   
     //
     Animator anim;
     [SerializeField]
@@ -75,8 +76,15 @@ public class Enemy : MonoBehaviour
         anim = GetComponent<Animator>();
         StartCoroutine(Think());
     }
-    
-
+    //
+    public Transform enemy_pos;
+    public Vector2 TailSize;
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireCube(enemy_pos.position, TailSize);
+    }
+    //
     IEnumerator Spear_Wave()
     {
         SpearEnergy wave = ObjectPool.SpearGetObject();
