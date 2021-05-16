@@ -25,18 +25,36 @@ public class Enemy : MonoBehaviour
         //Hp_slider.value = Mathf.Lerp(Hp_slider.value, (float)health, Time.deltaTime * 10);
     }
     public void TakeDamage(int damage)
-    {   
+    {
+        //StartCoroutine(Enemy_Hit(damage));
         anim.SetTrigger("HitMotion");
         health -= damage;
-        HandleHp(); 
-        
-        if (health <= 0) {
+        HandleHp();
+
+        if (health <= 0)
+        {
 
             Time.timeScale = 0;
             BlackScreen.SetActive(true);
             tutorialout.SetActive(false);
-        } 
+        }
     }
+    //IEnumerator Enemy_Hit(int damage)
+    //{
+    //    anim.SetTrigger("HitMotion");
+    //    health -= damage;
+    //    HandleHp();
+    //    yield return new WaitForSeconds(0.5f);
+
+    //    if (health <= 0)
+    //    {
+    //        Time.timeScale = 0;
+    //        BlackScreen.SetActive(true);
+    //        tutorialout.SetActive(false);
+    //    }
+
+    //}
+
     //
     //플레이어 방향
     public Transform player;
