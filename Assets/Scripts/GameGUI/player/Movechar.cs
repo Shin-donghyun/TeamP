@@ -77,7 +77,7 @@ public class Movechar : MonoBehaviour
         }
         if (Input.GetAxisRaw("Horizontal") == -1)
             transform.eulerAngles = new Vector3(0, 180, 0);
-        else 
+        else if (Input.GetAxisRaw("Horizontal") == 1)
             transform.eulerAngles = new Vector3(0, 0, 0);
 
     }
