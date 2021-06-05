@@ -430,6 +430,7 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
+<<<<<<< HEAD
   - m_Name: Hit
     m_Type: 4
     m_DefaultFloat: 0
@@ -460,6 +461,8 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 1
     m_Controller: {fileID: 0}
+=======
+>>>>>>> b6bb5e9b2c2be95e5b2602cecaf908596e5962dd
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
