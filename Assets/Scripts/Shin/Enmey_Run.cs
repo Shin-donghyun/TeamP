@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 public class Enmey_Run : StateMachineBehaviour
 {
-    public float speed = 5f;
+    public float speed = 20f;
     public float attackRange1 = 1f;
   
     Transform player;

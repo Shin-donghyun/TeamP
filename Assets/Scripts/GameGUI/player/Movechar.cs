@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Tilemaps;
 
 public class Movechar : MonoBehaviour
 {    
@@ -148,5 +149,17 @@ public class Movechar : MonoBehaviour
     public void TakePlayerDamage(int damage)
     {
         Debug.Log(damage);
+    }
+    public GameObject tile;
+    void TileMapOn()
+    {
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            tile.SetActive(true);
+        }
+        else if(Input.GetKeyDown("j"))
+        {
+            tile.SetActive(false);
+        }
     }
 }

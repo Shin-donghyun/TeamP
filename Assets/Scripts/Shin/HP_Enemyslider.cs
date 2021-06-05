@@ -7,8 +7,8 @@ public class HP_Enemyslider : MonoBehaviour
 	[SerializeField]
 	private Slider Hp_slider;
 
-	private float health = 100;
-	private float CurHp = 100;
+	private float health = 200;
+	private float CurHp = 200;
 	public bool isInvulnerable = false;
 
 	public GameObject closeimg;
@@ -20,25 +20,12 @@ public class HP_Enemyslider : MonoBehaviour
     }
 
     void Update()
-    {
-        if (Input.GetKeyDown("v"))
-        {
-			if (health > 0)
-			{
-				CurHp -= 10;
-			}
-            else
-            {
-				CurHp = 0;
-            }
-        }
-		HandleHp();
-		if (CurHp <= 0)
+	{
+		if (CurHp < 150)
 		{
-			Time.timeScale = 1;
-			closeimg.SetActive(true);
-			cav.SetActive(false);
+			GetComponent<Animator>().SetBool("2P_moving", false);
 		}
+		HandleHp();
 	}
 	private void HandleHp()
     {
@@ -52,12 +39,23 @@ public class HP_Enemyslider : MonoBehaviour
 		CurHp -= damage;
 
 		HandleHp();
-		if (health <= 0)
+
+		if (CurHp <= 150)
+		{
+
+			GetComponent<Animator>().SetBool("2P_moving",false);
+		}
+
+		if (CurHp <= 0)
 		{
 			Time.timeScale = 1;
 			closeimg.SetActive(true);
 			cav.SetActive(false);
 		}
 	}
+	void Die()
+    {
+
+    }
 }
 
