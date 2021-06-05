@@ -418,7 +418,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbc96e4c83ae48d4d95e5c6123fd5e79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offest: 0
+  offest: 0.005
   player: {fileID: 1724114708}
 --- !u!212 &402445453
 SpriteRenderer:
@@ -732,7 +732,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbc96e4c83ae48d4d95e5c6123fd5e79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offest: 0.0001
+  offest: 0.008
   player: {fileID: 1724114708}
 --- !u!212 &992428347
 SpriteRenderer:
@@ -1061,7 +1061,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1153183310
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1383,7 +1383,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbc96e4c83ae48d4d95e5c6123fd5e79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offest: 0
+  offest: 0.1
   player: {fileID: 1724114708}
 --- !u!212 &1188595150
 SpriteRenderer:
@@ -3081,7 +3081,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbc96e4c83ae48d4d95e5c6123fd5e79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offest: 0.005
+  offest: 0.01
   player: {fileID: 1724114708}
 --- !u!212 &1864708415
 SpriteRenderer:
@@ -3399,7 +3399,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbc96e4c83ae48d4d95e5c6123fd5e79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offest: 0.5
+  offest: 0.05
   player: {fileID: 1724114708}
 --- !u!212 &2037447367
 SpriteRenderer:
