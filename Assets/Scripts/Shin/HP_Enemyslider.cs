@@ -42,20 +42,19 @@ public class HP_Enemyslider : MonoBehaviour
 
 		if (CurHp <= 150)
 		{
-
 			GetComponent<Animator>().SetBool("2P_moving",false);
 		}
 
 		if (CurHp <= 0)
 		{
-			Time.timeScale = 1;
-			closeimg.SetActive(true);
-			cav.SetActive(false);
+			Die();
 		}
 	}
 	void Die()
     {
-
-    }
+		Time.timeScale = 1;
+		closeimg.SetActive(true);
+		cav.SetActive(false);
+	}
 }
 

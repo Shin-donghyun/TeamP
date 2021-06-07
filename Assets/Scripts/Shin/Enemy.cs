@@ -9,12 +9,14 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private Slider Hp_slider;
 
-    private int health = 100;
-    private int CurHp = 100;
+    private int health = 200;
+    private int CurHp = 200;
 
     public GameObject BlackScreen;
     public GameObject tutorialout;
 
+    public Text talkText;
+    public GameObject talkobj;
     void Start()
     {
         Hp_slider.maxValue = health;
@@ -31,31 +33,33 @@ public class Enemy : MonoBehaviour
         health -= damage;
         HandleHp();
 
+        if (health == 100)
+        {
+            Time.timeScale = 0;
+            talkobj.SetActive(true);
+            talkText.text = "살려줘";
+        }
+
         if (health <= 0)
         {
-
             Time.timeScale = 0;
             BlackScreen.SetActive(true);
             tutorialout.SetActive(false);
         }
     }
-    //IEnumerator Enemy_Hit(int damage)
-    //{
-    //    anim.SetTrigger("HitMotion");
-    //    health -= damage;
-    //    HandleHp();
-    //    yield return new WaitForSeconds(0.5f);
-
-    //    if (health <= 0)
-    //    {
-    //        Time.timeScale = 0;
-    //        BlackScreen.SetActive(true);
-    //        tutorialout.SetActive(false);
-    //    }
-
-    //}
-
-    //
+    public void Onbtn1()
+    { 
+        
+        Time.timeScale = 1;
+        talkobj.SetActive(false);
+       
+    }
+    public void Onbtn2()
+    {
+        GetComponent<Animator>().SetBool("2Pmoving",true);
+        Time.timeScale = 1;
+        talkobj.SetActive(false);
+    }
     //플레이어 방향
     public Transform player;
     public bool isFlipped = false;

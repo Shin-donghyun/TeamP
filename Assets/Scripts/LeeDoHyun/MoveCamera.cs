@@ -9,6 +9,7 @@ public class MoveCamera : MonoBehaviour
 
     public Vector2 center;
     public Vector2 size;
+    Transform camLimit;
     float height;
     float width;
     void Start()
